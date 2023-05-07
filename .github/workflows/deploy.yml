@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Fix permissions
       run: |
-          sudo chmod -R 777 /Didebaan/actions-runner/_work/ApiDocs/
+          sudo chmod -R 777 /Didebaan/apidoc-runner/_work/
 
     - name: Checkout repository
       uses: actions/checkout@v2
