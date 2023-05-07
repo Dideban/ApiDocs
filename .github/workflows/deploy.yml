@@ -15,7 +15,7 @@ jobs:
 
     - name: Build with Docker
       run: |
-        docker run --rm -v "${PWD}/build:/srv/slate/build" -v "${PWD}/source:/srv/slate/source" slatedocs/slate build
+        sudo docker run --rm -v "${PWD}/build:/srv/slate/build" -v "${PWD}/source:/srv/slate/source" slatedocs/slate build
 
    # - name: Deploy to server
    #   run: |
@@ -27,4 +27,4 @@ jobs:
     - name: Serve with Docker 
       if: always()
       run: |
-        docker-compose up -d
+        sudo docker-compose up -d
