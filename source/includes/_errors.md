@@ -1,22 +1,35 @@
 # Errors
 
+```json
+#Error response body is always an array of objects with a key and a message. Here are a few examples:
+
+[
+    {
+        "key": "Id",
+        "message": "Id is required."
+    }
+]
+
+[
+    {
+        "key": "not_found",
+        "message": "وب‌سایت با شناسه مورد نظر یافت نشد."
+    }
+]
+```
 <aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+This section provides a list of error codes you may encounter if a request is sent with incorrect formatting or if there is an issue with our servers.
 </aside>
 
-The Kittn API uses the following error codes:
-
+Dideban API uses the following error codes:
 
 Error Code | Meaning
 ---------- | -------
-400 | Bad Request -- Your request is invalid.
-401 | Unauthorized -- Your API key is wrong.
-403 | Forbidden -- The kitten requested is hidden for administrators only.
-404 | Not Found -- The specified kitten could not be found.
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method.
-406 | Not Acceptable -- You requested a format that isn't json.
-410 | Gone -- The kitten requested has been removed from our servers.
-418 | I'm a teapot.
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+400 | Bad Request – Your request is malformed or invalid.
+401 | Unauthorized – Your token is either invalid or has expired.
+403 | Forbidden – You lack the necessary permissions to access this resource.
+404 | Not Found – The specified entity could not be located.
+429 | Too Many Requests – You are sending requests at a rate exceeding our limits. Please slow down.
+500 | Internal Server Error – An issue has occurred on our server. Please try again later.
+503 | Service Unavailable – Our servers are temporarily offline for maintenance. Check back soon.
+504 | Gateway Timeout – A serious issue has likely occurred, but don't worry, we're working on it.
