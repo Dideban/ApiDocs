@@ -22,5 +22,6 @@ jobs:
         sudo docker run --rm -v "${PWD}/build:/srv/slate/build" -v "${PWD}/source:/srv/slate/source" slatedocs/slate build
 
     - name: Serve with Docker 
+      if: always()
       run: |
-        sudo docker run --rm -p 4568:4567 -v "${PWD}/source:/srv/slate/source" slatedocs/slate serve
+        sudo docker-compose up -d
