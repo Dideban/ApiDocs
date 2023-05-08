@@ -10,8 +10,8 @@ language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of
 toc_footers:
   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
-# includes:
-#   - errors
+includes:
+  - errors
 
 search: true
 
@@ -55,6 +55,18 @@ Make sure to update your application's API endpoint URLs accordingly when switch
 Always exercise caution when working with live data in the Production environment, and ensure you have thoroughly tested your integration in the Staging environment before deploying your application.
 
 # Authentication
+
+```json
+#Sample API response:
+{
+    "access_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IkE3N0NERTUyREJDRTgxRjFDNDRERDkzRDM5NUQ5MUI0IiwidHlwIjoiYXQrand0In0.....",
+    "expires_in": 36000,
+    "token_type": "Bearer",
+    "refresh_token": "843649A1ACD4663E67820C68CC15.....",
+    "scope": "api offline_access openid"
+}
+```
+
 The Dideban API uses API keys to authenticate requests. This method ensures a secure and straightforward way to access our services. API keys are only available to users who have created one for themselves. To get started with the API, you must first generate your unique API key.
 
 Please note that your API key grants access to your Dideban account and should be treated as a sensitive credential. Keep your API key secure and do not share it with unauthorized parties.
@@ -281,54 +293,50 @@ Replace YOUR_REFRESH_TOKEN with your actual refresh token in each code sample. T
 ```json
 #Sample API response:
 
-{
-    "result": [
-        {
-            "configId": "644ff890a41411ece9bd0b2f",
-            "subscriptionId": "644ff920a41411ece9bd0b32",
-            "interval": "00:01:00",
-            "baseUrl": null,
-            "sourceUrls": [
-                "https://sample.ir"
-            ],
-            "urlAbbreviation": "di",
-            "scrapeInstruction": null,
-            "externalApiInstruction": {
-                "id": "644ff890a41411ece9bd0b2e",
-                "variableValue": "https://api.sample.ir/v8/web-search/sample",
-                "options": null
-            },
-            "selectedOptions": null,
-            "triggerValue": {
-                "mainStringValue": null,
-                "secondStringValue": null,
-                "mainNumberValue": null,
-                "secondNumberValue": null,
-                "previousFetchedDataId": "6453a1360141cdcbd454bba1",
-                "previousFetchedData": null
-            },
-            "triggerType": "A_NewRow",
-            "customTriggerCode": 0,
-            "method": "Element",
-            "status": "Active",
-            "name": "دیوار - ویلاهای استان البرز",
-            "websiteId": null,
-            "notificationSetting": {
-                "receivePush": true,
-                "receiveTelegram": true,
-                "receiveSMS": false,
-                "receiveEmail": true
-            },
-            "lastFetchDate": "2023-05-04T12:12:38.616Z",
-            "lastChangeDate": "2023-05-04T12:12:38.616Z",
-            "previousFetchedDataSummary": "نمونه داده ها | و 23 مورد دیگر",
-            "lastChangeType": "Auxilary"
-        }
-    ],
-    "errors": null,
-    "systemFault": false,
-    "isValid": true
-}
+[
+    {
+        "configId": "644ff890a41411ece9bd0b2f",
+        "subscriptionId": "644ff920a41411ece9bd0b32",
+        "interval": "00:01:00",
+        "baseUrl": null,
+        "sourceUrls": [
+            "https://sample.ir"
+        ],
+        "urlAbbreviation": "di",
+        "scrapeInstruction": null,
+        "externalApiInstruction": {
+            "id": "644ff890a41411ece9bd0b2e",
+            "variableValue": "https://api.sample.ir/v8/web-search/sample",
+            "options": null
+        },
+        "selectedOptions": null,
+        "triggerValue": {
+            "mainStringValue": null,
+            "secondStringValue": null,
+            "mainNumberValue": null,
+            "secondNumberValue": null,
+            "previousFetchedDataId": "6453a1360141cdcbd454bba1",
+            "previousFetchedData": null
+        },
+        "triggerType": "A_NewRow",
+        "customTriggerCode": 0,
+        "method": "Element",
+        "status": "Active",
+        "name": "دیوار - ویلاهای استان البرز",
+        "websiteId": null,
+        "notificationSetting": {
+            "receivePush": true,
+            "receiveTelegram": true,
+            "receiveSMS": false,
+            "receiveEmail": true
+        },
+        "lastFetchDate": "2023-05-04T12:12:38.616Z",
+        "lastChangeDate": "2023-05-04T12:12:38.616Z",
+        "previousFetchedDataSummary": "نمونه داده ها | و 23 مورد دیگر",
+        "lastChangeType": "Auxilary"
+    },
+    //Other subscriptions you might have...
+]
 ```
 With the Subscriptions List API, you can fetch a list of scraping configurations that you have subscribed to, along with their details. The API returns various attributes, such as `configId`, `subscriptionId`, `interval`, `baseUrl`, `sourceUrls`, `scrapeInstruction`, `externalApiInstruction`, and more.
 ## Get All Config Subscriptions
@@ -413,52 +421,62 @@ Here are the code samples in cURL, PHP, .NET (C#), and JavaScript for fetching t
 # Analyze Results
 
 ```json
-{
-    "result": [
-        {
-            "id": "6453a1360141cdcbd454bba2",
-            "scrapeConfigId": null,
-            "externalApiConfigId": "644ff890a41411ece9bd0b2f",
-            "scrapeSubscriptionId": null,
-            "externalApiSubscriptionId": "644ff920a41411ece9bd0b32",
-            "analyseStartDate": "2023-05-04T12:12:38.65Z",
-            "analyseEndDate": "2023-05-04T12:12:38.65Z",
-            "fetchStartDate": "2023-05-04T12:12:36.595Z",
-            "fetchEndDate": "2023-05-04T12:12:38.616Z",
-            "result": {
-                "newTextSummary": "۲۳۵ متر با جواز ساخت لاین ۳ | ۱۹,۰۰۰,۰۰۰,۰۰۰ تومان | آژانس املاک نمونه در کرج | و 2 مورد دیگر",
-                "oldTextSummary": null,
-                "documentDifferences": [
-                    {
-                        "oldRow": null,
-                        "newRow": {
-                            "image_src": "",
-                            "title": "۲۳۵ متر با جواز ساخت لاین ۳",
-                            "price": "۱۹,۰۰۰,۰۰۰,۰۰۰ تومان",
-                            "description": "آژانس املاک نمونه در کرج",
-                            "link": "https://sample.ir/v/AZJx230b",
-                            "date": "1683201306261392"
-                        }
-                    },
-                    {
-                        "oldRow": null,
-                        "newRow": {
-                            "image_src": "",
-                            "title": "۲۳۵ متر با جواز ساخت لاین ۳",
-                            "price": "۱۹,۰۰۰,۰۰۰,۰۰۰ تومان",
-                            "description": "آژانس املاک نمونه در کرج",
-                            "link": "https://sample.ir/v/AZJx230b",
-                            "date": "1683201306261392"
-                        }
+[
+    {
+        "id": "6453a1360141cdcbd454bba2",
+        "scrapeConfigId": null,
+        "externalApiConfigId": "644ff890a41411ece9bd0b2f",
+        "scrapeSubscriptionId": null,
+        "externalApiSubscriptionId": "644ff920a41411ece9bd0b32",
+        "analyseStartDate": "2023-05-04T12:12:38.65Z",
+        "analyseEndDate": "2023-05-04T12:12:38.65Z",
+        "fetchStartDate": "2023-05-04T12:12:36.595Z",
+        "fetchEndDate": "2023-05-04T12:12:38.616Z",
+        "result": {
+            "newTextSummary": "۲۳۵ متر با جواز ساخت لاین ۳ | ۱۹,۰۰۰,۰۰۰,۰۰۰ تومان | آژانس املاک نمونه در کرج | و 2 مورد دیگر",
+            "oldTextSummary": null,
+            "documentDifferences": [
+                {
+                    "oldRow": null,
+                    "newRow": {
+                        "image_src": "",
+                        "title": "۲۳۵ متر با جواز ساخت لاین ۳",
+                        "price": "۱۹,۰۰۰,۰۰۰,۰۰۰ تومان",
+                        "description": "آژانس املاک نمونه در کرج",
+                        "link": "https://sample.ir/v/AZJx230b",
+                        "date": "1683201306261392"
                     }
-                ]
-            },
-            "status": "Done",
-            "triggerStatus": "Met"
-        }
-    ]
-}
+                },
+                {
+                    "oldRow": null,
+                    "newRow": {
+                        "image_src": "",
+                        "title": "۲۳۵ متر با جواز ساخت لاین ۳",
+                        "price": "۱۹,۰۰۰,۰۰۰,۰۰۰ تومان",
+                        "description": "آژانس املاک نمونه در کرج",
+                        "link": "https://sample.ir/v/AZJx230b",
+                        "date": "1683201306261392"
+                    }
+                }
+            ]
+        },
+        "status": "Done",
+        "triggerStatus": "Met"
+    },
+    //Other analyse results you might have...
+]
 ```
+
+The "analyse orders" are a set of results generated from the processing of scraping requests in a scraping configuration. These orders are based on the interval and triggers set in the configuration. The main purpose of analyze orders is to identify and track changes in the scraped data over time.
+
+When a scraping request is processed, the system analyzes the fetched data to look for differences based on the triggers set in the configuration. These differences are then stored as analyse results, which can be retrieved through the provided API.
+
+An analyse result typically contains information such as the start and end time of the analysis, the fetched data, and the differences found between the old and new data. In the given example, the result shows that there are two new rows added, along with their respective details such as the title, price, description, and link.
+
+To retrieve all the analyse results, you can use the API endpoint https://stageapi.dideban.live/analyseResult/getAll, with the required parameters and filters such as TriggeredOnly, PageSize, CurrentPage, ScrapeSubscriptionId, ExternalApiSubscriptionId, From, and To. Make sure to replace <YOUR_ACCESS_TOKEN> with your actual access token in the API request.
+
+In summary, the analyse orders are a way to track and monitor changes in scraped data based on the triggers set in a scraping configuration. These orders can be retrieved and analyzed through the provided API to help users understand and act upon any significant changes in the data.
+
 ## Get All Analyse Results
 
 Replace `YOUR_ACCESS_TOKEN` with your actual access token in each example.
@@ -546,6 +564,7 @@ axios(config)
 
 
 To fetch the list of subscriptions, make a GET request to the `/configSubscription/getAll` endpoint with the optional query parameters below:
+
 1. TriggeredOnly: When set to true, it will only return the results where the trigger conditions are met.
 2. PageSize: Determines the number of analyze results returned per page.
 3. CurrentPage: Specifies the current page number for the paginated results.
@@ -553,16 +572,23 @@ To fetch the list of subscriptions, make a GET request to the `/configSubscripti
 5. ExternalApiSubscriptionId: An optional filter for analyze results based on a specific External API Subscription ID.
 6. From: The start date for the date range filter (in ISO 8601 format).
 7. To: The end date for the date range filter (in ISO 8601 format).
+
 <aside class="notice">
 You can use either ScrapeSubscriptionId or ExternalApiSubscriptionId in the request, but not both at the same time.
 </aside>
 
 ### PageSize and CurrentPage
-PageSize and CurrentPage are used for pagination. PageSize determines the number of analyze results to display per page, while CurrentPage specifies which page of the results you want to retrieve. For example, if there are 100 results and you set PageSize to 10, you will have 10 pages of results. By changing the CurrentPage parameter, you can navigate through these pages.
+PageSize and CurrentPage are used for pagination. PageSize determines the number of analyze results to display per page, while CurrentPage specifies which page of the results you want to retrieve. 
+
+For example, if there are 100 results and you set PageSize to 10, you will have 10 pages of results. By changing the CurrentPage parameter, you can navigate through these pages.
 
 <aside class="notice">
-PageSize can not be larger than 100.
+PageSize should be between 10 and 100.
 </aside>
 
 ### From and To
-The From and To query parameters are used to filter the analyze results based on a date range. The results will only include those that fall within the specified range. The date values should be in ISO 8601 format (e.g., "2023-02-07T14:19:13.574Z").
+The From and To query parameters are used to filter the analyze results based on a date range. The results will only include those that fall within the specified range.
+
+<aside class="notice">
+ The date values should be in ISO 8601 format (e.g., "2023-02-07T14:19:13.574Z").
+</aside>
