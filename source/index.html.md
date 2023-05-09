@@ -79,7 +79,7 @@ If you believe your API key has been compromised or you need to revoke access fo
 ## Obtain Access Token
 
 ```shell
-curl --location 'https://stageapi.dideban.live/auth/token' \
+curl --location 'https://stageapi.dideban.live/v1/auth/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'api_key=<YOUR_API_KEY>' \
 --data-urlencode 'client_id=apiClient' \
@@ -94,7 +94,7 @@ curl --location 'https://stageapi.dideban.live/auth/token' \
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://stageapi.dideban.live/auth/token',
+  CURLOPT_URL => 'https://stageapi.dideban.live/v1/auth/token',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -143,7 +143,7 @@ namespace DidebanAuthSample
             });
 
             content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
-            var response = await client.PostAsync("https://stageapi.dideban.live/auth/token", content);
+            var response = await client.PostAsync("https://stageapi.dideban.live/v1/auth/token", content);
 
             var result = await response.Content.ReadAsStringAsync();
             Console.WriteLine(result);
@@ -165,7 +165,7 @@ const data = qs.stringify({
 
 const config = {
   method: 'post',
-  url: 'https://stageapi.dideban.live/auth/token',
+  url: 'https://stageapi.dideban.live/v1/auth/token',
   headers: { 
     'Content-Type': 'application/x-www-form-urlencoded'
   },
@@ -185,7 +185,7 @@ To obtain an access token, make a POST request to the `/auth/token` endpoint wit
 ## Refresh Access Token
 
 ```shell
-curl --location 'https://stageapi.dideban.live/auth/token' \
+curl --location 'https://stageapi.dideban.live/v1/auth/token' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --data-urlencode 'client_id=apiClient' \
 --data-urlencode 'client_secret=secret' \
@@ -198,7 +198,7 @@ curl --location 'https://stageapi.dideban.live/auth/token' \
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://stageapi.dideban.live/auth/token',
+  CURLOPT_URL => 'https://stageapi.dideban.live/v1/auth/token',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -247,7 +247,7 @@ namespace DidebanRefreshTokenSample
             });
 
             content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
-            var response = await client.PostAsync("https://stageapi.dideban.live/auth/token", content);
+            var response = await client.PostAsync("https://stageapi.dideban.live/v1/auth/token", content);
 
             var result = await response.Content.ReadAsStringAsync();
             Console.WriteLine(result);
@@ -269,7 +269,7 @@ const data = qs.stringify({
 
 const config = {
   method: 'post',
-  url: 'https://stageapi.dideban.live/auth/token',
+  url: 'https://stageapi.dideban.live/v1/auth/token',
   headers: { 
     'Content-Type': 'application/x-www-form-urlencoded'
   },
@@ -295,6 +295,7 @@ Replace YOUR_REFRESH_TOKEN with your actual refresh token in each code sample. T
 
 [
     {
+        "type": "ExternalApiConfig",
         "configId": "644ff890a41411ece9bd0b2f",
         "subscriptionId": "644ff920a41411ece9bd0b32",
         "interval": "00:01:00",
@@ -342,7 +343,7 @@ With the Subscriptions List API, you can fetch a list of scraping configurations
 ## Get All Config Subscriptions
 
 ```shell
-curl --location 'https://stageapi.dideban.live/configSubscription/getAll?OrderBy=BaseUrl' \
+curl --location 'https://stageapi.dideban.live/v1/configSubscription/getAll?OrderBy=BaseUrl' \
 --header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>'
 ```
 
@@ -351,7 +352,7 @@ curl --location 'https://stageapi.dideban.live/configSubscription/getAll?OrderBy
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://stageapi.dideban.live/configSubscription/getAll?OrderBy=BaseUrl',
+  CURLOPT_URL => 'https://stageapi.dideban.live/v1/configSubscription/getAll?OrderBy=BaseUrl',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
@@ -386,7 +387,7 @@ namespace DidebanSubscriptionsListSample
             var client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "<YOUR_ACCESS_TOKEN>");
 
-            var response = await client.GetAsync("https://stageapi.dideban.live/configSubscription/getAll?OrderBy=BaseUrl");
+            var response = await client.GetAsync("https://stageapi.dideban.live/v1/configSubscription/getAll?OrderBy=BaseUrl");
 
             var result = await response.Content.ReadAsStringAsync();
             Console.WriteLine(result);
@@ -400,7 +401,7 @@ const axios = require('axios');
 
 const config = {
   method: 'get',
-  url: 'https://stageapi.dideban.live/configSubscription/getAll?OrderBy=BaseUrl',
+  url: 'https://stageapi.dideban.live/v1/configSubscription/getAll?OrderBy=BaseUrl',
   headers: { 
     'Authorization': 'Bearer <YOUR_ACCESS_TOKEN>'
   }
@@ -423,6 +424,7 @@ Here are the code samples in cURL, PHP, .NET (C#), and JavaScript for fetching t
 ```json
 [
     {
+        "type":"ExternalApiConfig",
         "id": "6453a1360141cdcbd454bba2",
         "scrapeConfigId": null,
         "externalApiConfigId": "644ff890a41411ece9bd0b2f",
@@ -473,7 +475,7 @@ When a scraping request is processed, the system analyzes the fetched data to lo
 
 An analyse result typically contains information such as the start and end time of the analysis, the fetched data, and the differences found between the old and new data. In the given example, the result shows that there are two new rows added, along with their respective details such as the title, price, description, and link.
 
-To retrieve all the analyse results, you can use the API endpoint https://stageapi.dideban.live/analyseResult/getAll, with the required parameters and filters such as TriggeredOnly, PageSize, CurrentPage, ScrapeSubscriptionId, ExternalApiSubscriptionId, From, and To. Make sure to replace <YOUR_ACCESS_TOKEN> with your actual access token in the API request.
+To retrieve all the analyse results, you can use the API endpoint https://stageapi.dideban.live/v1/analyseResult/getAll, with the required parameters and filters such as TriggeredOnly, PageSize, CurrentPage, ScrapeSubscriptionId, ExternalApiSubscriptionId, From, and To. Make sure to replace <YOUR_ACCESS_TOKEN> with your actual access token in the API request.
 
 In summary, the analyse orders are a way to track and monitor changes in scraped data based on the triggers set in a scraping configuration. These orders can be retrieved and analyzed through the provided API to help users understand and act upon any significant changes in the data.
 
@@ -483,7 +485,7 @@ Replace `YOUR_ACCESS_TOKEN` with your actual access token in each example.
 
 
 ```shell
-curl --location 'https://stageapi.dideban.live/analyseResult/getAll?TriggeredOnly=true&PageSize=10&CurrentPage=0&ScrapeSubscriptionId=63999fd71d200b38fa7521d7&ExternalApiSubscriptionId=63999fd71d200b38fa7521d7&From=2023-02-07T14%3A19%3A13.574Z&To=2023-05-07T14%3A19%3A13.574Z' \
+curl --location 'https://stageapi.dideban.live/v1/analyseResult/getAll?TriggeredOnly=true&PageSize=10&CurrentPage=0&ScrapeSubscriptionId=63999fd71d200b38fa7521d7&ExternalApiSubscriptionId=63999fd71d200b38fa7521d7&From=2023-02-07T14%3A19%3A13.574Z&To=2023-05-07T14%3A19%3A13.574Z' \
 --header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>'
 ```
 
@@ -491,7 +493,7 @@ curl --location 'https://stageapi.dideban.live/analyseResult/getAll?TriggeredOnl
 $curl = curl_init();
 
 curl_setopt_array($curl, [
-  CURLOPT_URL => "https://stageapi.dideban.live/analyseResult/getAll?TriggeredOnly=true&PageSize=10&CurrentPage=0&ScrapeSubscriptionId=63999fd71d200b38fa7521d7&From=2023-02-07T14%3A19%3A13.574Z&To=2023-05-07T14%3A19%3A13.574Z",
+  CURLOPT_URL => "https://stageapi.dideban.live/v1/analyseResult/getAll?TriggeredOnly=true&PageSize=10&CurrentPage=0&ScrapeSubscriptionId=63999fd71d200b38fa7521d7&From=2023-02-07T14%3A19%3A13.574Z&To=2023-05-07T14%3A19%3A13.574Z",
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_CUSTOMREQUEST => "GET",
   CURLOPT_HTTPHEADER => [
@@ -525,7 +527,7 @@ public class Program
             httpClient.DefaultRequestHeaders.Authorization =
                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "<YOUR_ACCESS_TOKEN>");
 
-            var url = "https://stageapi.dideban.live/analyseResult/getAll?TriggeredOnly=true&PageSize=10&CurrentPage=0&ScrapeSubscriptionId=63999fd71d200b38fa7521d7&From=2023-02-07T14%3A19%3A13.574Z&To=2023-05-07T14%3A19%3A13.574Z";
+            var url = "https://stageapi.dideban.live/v1/analyseResult/getAll?TriggeredOnly=true&PageSize=10&CurrentPage=0&ScrapeSubscriptionId=63999fd71d200b38fa7521d7&From=2023-02-07T14%3A19%3A13.574Z&To=2023-05-07T14%3A19%3A13.574Z";
             HttpResponseMessage response = await httpClient.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
@@ -547,7 +549,7 @@ const axios = require('axios');
 
 const config = {
   method: 'get',
-  url: 'https://stageapi.dideban.live/analyseResult/getAll?TriggeredOnly=true&PageSize=10&CurrentPage=0&ScrapeSubscriptionId=63999fd71d200b38fa7521d7&From=2023-02-07T14%3A19%3A13.574Z&To=2023-05-07T14%3A19%3A13.574Z',
+  url: 'https://stageapi.dideban.live/v1/analyseResult/getAll?TriggeredOnly=true&PageSize=10&CurrentPage=0&ScrapeSubscriptionId=63999fd71d200b38fa7521d7&From=2023-02-07T14%3A19%3A13.574Z&To=2023-05-07T14%3A19%3A13.574Z',
   headers: {
     'Authorization': 'Bearer <YOUR_ACCESS_TOKEN>'
   }
